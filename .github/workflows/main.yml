@@ -1,0 +1,30 @@
+name: Publish
+
+on: push
+
+concurrency: 
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Publish Logseq graph
+    steps:
+      - uses: actions/checkout@v3
+      # - name: Add Home Page
+      #   run: |
+      #     sed -i 's/;:default-home/:default-home/g' logseq/config.edn
+      #     sed -i 's#:feature/enable-journals\? true#:feature/enable-journals? false#g' logseq/config.edn
+      - name: Logseq Publish 🚩
+        uses: logseq/publish-spa@v0.1.0
+      - name: add a nojekyll file
+        run: touch $GITHUB_WORKSPACE/www/.nojekyll
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          # repository-name: b-yp/Logseq-publish
+          branch: gh-pages # The branch the action should deploy to.
+          folder: www # The folder the action should deploy.
+          clean: true
+          single-commit: true
