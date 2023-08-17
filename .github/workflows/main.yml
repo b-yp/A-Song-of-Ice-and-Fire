@@ -17,7 +17,7 @@ jobs:
       #     sed -i 's/;:default-home/:default-home/g' logseq/config.edn
       #     sed -i 's#:feature/enable-journals\? true#:feature/enable-journals? false#g' logseq/config.edn
       - name: Logseq Publish 🚩
-        uses: logseq/publish-spa@v0.1.0
+        uses: logseq/publish-spa@v0.2.0
       - name: add a nojekyll file
         run: touch $GITHUB_WORKSPACE/www/.nojekyll
       - name: Deploy 🚀
