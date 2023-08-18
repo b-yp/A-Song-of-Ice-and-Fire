@@ -18,6 +18,9 @@ jobs:
       #     sed -i 's#:feature/enable-journals\? true#:feature/enable-journals? false#g' logseq/config.edn
       - name: Logseq Publish 🚩
         uses: logseq/publish-spa@v0.2.0
+      # 注入 vercel 分析脚本
+      - name: Inject Vercel Analysis Script into HTML
+        run: sed -i 's|<body>|<body><script defer src="/_vercel/insights/script.js"></script>|' www/index.html
       - name: add a nojekyll file
         run: touch $GITHUB_WORKSPACE/www/.nojekyll
       - name: Deploy 🚀
