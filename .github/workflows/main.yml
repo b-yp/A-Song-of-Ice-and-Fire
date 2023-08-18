@@ -21,6 +21,9 @@ jobs:
       # 注入 vercel 分析脚本
       - name: Inject Vercel Analysis Script into HTML
         run: sed -i 's|<body>|<body><script defer src="/_vercel/insights/script.js"></script>|' www/index.html
+      # 注入 百度 网站统计
+      - name: Inject Baidu Analytics Script into HTML
+        run: sed -i 's|<body>|<body><script defer src="https://hm.baidu.com/hm.js?fdb478ed53f1821e47d5c1f3d1071cce"></script>|' www/index.html
       - name: add a nojekyll file
         run: touch $GITHUB_WORKSPACE/www/.nojekyll
       - name: Deploy 🚀
