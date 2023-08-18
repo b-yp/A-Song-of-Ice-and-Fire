@@ -16,6 +16,9 @@ jobs:
       #   run: |
       #     sed -i 's/;:default-home/:default-home/g' logseq/config.edn
       #     sed -i 's#:feature/enable-journals\? true#:feature/enable-journals? false#g' logseq/config.edn
+      # 修改为发布的自定义 CSS
+      - name: Change custom.css
+        run: cp logseq/custom-publish.css logseq/custom.css
       - name: Logseq Publish 🚩
         uses: logseq/publish-spa@v0.2.0
       # 注入 vercel 分析脚本
