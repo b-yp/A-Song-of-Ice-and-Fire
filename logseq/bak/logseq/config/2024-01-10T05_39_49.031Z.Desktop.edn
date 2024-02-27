@@ -416,4 +416,4 @@
  :editor/preferred-pasting-file? true
  :publishing/all-pages-public? true
  :feature/enable-journals? false
- :default-home {:page "HOME"}}
+ :default-home {:page "home"}}
